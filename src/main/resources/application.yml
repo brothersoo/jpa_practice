@@ -1,0 +1,17 @@
+spring:
+  datasource:
+    url: ENC(icRftVMy8Bmecbq/bjrcpyzhGfjWn3JHawwjhMj16HrdG1R5C2kT6/JdvDXVRsKyXlu8QcSLRZeJnFateAhkLHOZoK792XrtsGs1yX+obViojD6IphjpwyFHmyXf4XUiEykoc0YF948=)
+    username: ENC(Agd8wxPZ6oFkc3gqOlxKtA==)
+    password: ENC(PgowOBbAb5McQRr8U6812HG7qj0RSNGK)
+#    driver-class-name: ENC(XBweddOP2Ym1mYi1RKZoNPXZxRnMMze6G6JLwy+86YWIX+0OQSzJlg==)
+  jpa:
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+#        show_sql: true
+        format_sql: true
+
+logging.level:
+  org.hibernate.SQL:
+#  org.hibernate.type: trace #???? 2?
