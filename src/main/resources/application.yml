@@ -6,11 +6,12 @@ spring:
 #    driver-class-name: ENC(XBweddOP2Ym1mYi1RKZoNPXZxRnMMze6G6JLwy+86YWIX+0OQSzJlg==)
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: none
     properties:
       hibernate:
 #        show_sql: true
         format_sql: true
+        generate_statistics: true
 
 logging.level:
   org.hibernate.SQL:
