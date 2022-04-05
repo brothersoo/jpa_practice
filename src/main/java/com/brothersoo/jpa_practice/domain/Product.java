@@ -1,6 +1,7 @@
 package com.brothersoo.jpa_practice.domain;
 
 import static javax.persistence.EnumType.STRING;
+import static javax.persistence.FetchType.EAGER;
 import static javax.persistence.FetchType.LAZY;
 import static javax.persistence.GenerationType.IDENTITY;
 import static lombok.AccessLevel.PROTECTED;
@@ -39,7 +40,7 @@ public class Product {
   @Enumerated(STRING)
   private ProductType type;
 
-  @ManyToOne(fetch = LAZY)
+  @ManyToOne(fetch = EAGER)
   @JoinColumn(name = "vendor_id")
   private Vendor vendor;
 

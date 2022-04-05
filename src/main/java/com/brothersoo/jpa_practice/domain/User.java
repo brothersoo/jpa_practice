@@ -4,7 +4,6 @@ import static javax.persistence.EnumType.STRING;
 import static javax.persistence.GenerationType.IDENTITY;
 import static lombok.AccessLevel.*;
 
-import java.time.LocalDateTime;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -19,7 +18,7 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor(access = PROTECTED)
 @Entity
-public class User {
+public class User extends BaseTimeEntity {
 
   @Id
   @GeneratedValue(strategy = IDENTITY)
@@ -39,12 +38,6 @@ public class User {
   @Enumerated(value = STRING)
   private Gender gender;
 
-  @Column(name = "created_at", nullable = false)
-  private LocalDateTime createdAt;
-
-  @Column(name = "updated_at", nullable = false)
-  private LocalDateTime updatedAt;
-
   @Enumerated(value = STRING)
   private UserType type;
 
@@ -52,16 +45,13 @@ public class User {
   private List<Order> orders;
 
   @Builder
-  public User(Long id, String email, String password, String nickname,
-      Gender gender, LocalDateTime createdAt, LocalDateTime updatedAt,
+  public User(Long id, String email, String password, String nickname, Gender gender,
       UserType type) {
     this.id = id;
     this.email = email;
     this.password = password;
     this.nickname = nickname;
     this.gender = gender;
-    this.createdAt = createdAt;
-    this.updatedAt = updatedAt;
     this.type = type;
   }
 }

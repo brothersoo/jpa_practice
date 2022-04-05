@@ -1,16 +1,17 @@
 package com.brothersoo.jpa_practice.domain;
 
+import static javax.persistence.FetchType.EAGER;
 import static javax.persistence.FetchType.LAZY;
 import static javax.persistence.GenerationType.IDENTITY;
 import static lombok.AccessLevel.PROTECTED;
 
-import java.time.LocalDateTime;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,33 +19,29 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor(access = PROTECTED)
 @Entity
-public class Order {
+@Table(name="\"Order\"")
+public class Order extends BaseTimeEntity {
 
   @Id
   @GeneratedValue(strategy = IDENTITY)
   @Column(name = "order_id")
   private Long id;
 
-  @Column(name = "created_at", nullable = false)
-  private LocalDateTime createdAt;
-
-  @Column(name = "updated_at", nullable = false)
-  private LocalDateTime updatedAt;
+  @Column(nullable = false)
+  int amount;
 
   @ManyToOne(fetch = LAZY)
   @JoinColumn(name = "user_id")
   private User user;
 
-  @ManyToOne(fetch = LAZY)
+  @ManyToOne(fetch = EAGER)
   @JoinColumn(name = "product_id")
   private Product product;
 
   @Builder
-  public Order(Long id, LocalDateTime createdAt, LocalDateTime updatedAt,
-      User user, Product product) {
+  public Order(Long id, int amount, User user, Product product) {
     this.id = id;
-    this.createdAt = createdAt;
-    this.updatedAt = updatedAt;
+    this.amount = amount;
     this.user = user;
     this.product = product;
   }
