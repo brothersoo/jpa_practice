@@ -3,7 +3,6 @@ package com.brothersoo.jpa_practice.repository;
 import com.brothersoo.jpa_practice.domain.Order;
 import java.util.List;
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
 
